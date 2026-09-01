@@ -1,0 +1,892 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NOVA — Fashion & Lifestyle</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f4f1;
+            color: #111;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            z-index: 1000;
+
+            background: rgba(245,244,241,0.88);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid #deddd8;
+
+            padding: 17px 7%;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        .links {
+            display: flex;
+            gap: 27px;
+
+            list-style: none;
+
+            color: #555;
+
+            font-size: 14px;
+        }
+
+        .links a:hover {
+            color: #000;
+        }
+
+        .nav-btn {
+            background: #111;
+            color: white;
+
+            padding: 11px 20px;
+
+            border-radius: 8px;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+
+        /* HERO */
+
+        .hero {
+            min-height: 92vh;
+
+            display: flex;
+            align-items: center;
+
+            padding: 130px 7% 80px;
+
+            background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    #ddd9d0,
+                    transparent 35%
+                );
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: auto;
+            width: 100%;
+        }
+
+        .tag {
+            font-size: 12px;
+            letter-spacing: 3px;
+            font-weight: 800;
+
+            margin-bottom: 18px;
+
+            color: #666;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 9vw, 105px);
+
+            line-height: 0.9;
+
+            letter-spacing: -6px;
+
+            max-width: 900px;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #777;
+        }
+
+        .hero p {
+            max-width: 580px;
+
+            color: #666;
+
+            font-size: 18px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 13px;
+
+            margin-top: 30px;
+
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+
+            padding: 14px 23px;
+
+            border-radius: 9px;
+
+            font-weight: 800;
+
+            transition: 0.25s;
+        }
+
+        .primary {
+            background: #111;
+            color: white;
+        }
+
+        .secondary {
+            border: 1px solid #bbb;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+
+        /* SECTION */
+
+        section {
+            padding: 90px 7%;
+        }
+
+        .title {
+            max-width: 700px;
+
+            margin: auto auto 45px;
+
+            text-align: center;
+        }
+
+        .title h2 {
+            font-size: 43px;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 10px;
+        }
+
+        .title p {
+            color: #777;
+        }
+
+
+        /* CATEGORIES */
+
+        .categories {
+            max-width: 1150px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 15px;
+        }
+
+        .category {
+            min-height: 220px;
+
+            border-radius: 18px;
+
+            background: white;
+
+            border: 1px solid #deddd8;
+
+            padding: 25px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            transition: 0.3s;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .category:hover {
+            transform: translateY(-6px);
+        }
+
+        .category-icon {
+            position: absolute;
+
+            top: 25px;
+            right: 25px;
+
+            font-size: 60px;
+        }
+
+        .category small {
+            color: #888;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+
+        .category h3 {
+            font-size: 23px;
+        }
+
+
+        /* PRODUCTS */
+
+        .products {
+            max-width: 1150px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+        .product {
+            background: white;
+
+            border: 1px solid #deddd8;
+
+            border-radius: 17px;
+
+            overflow: hidden;
+
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 220px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #e5e2dc,
+                    #c9c6bf
+                );
+
+            display: grid;
+
+            place-items: center;
+
+            font-size: 80px;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            color: #888;
+        }
+
+        .product h3 {
+            margin-top: 5px;
+            font-size: 18px;
+        }
+
+        .product-bottom {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-top: 13px;
+        }
+
+        .price {
+            font-weight: 900;
+        }
+
+        .shop-btn {
+            font-size: 12px;
+
+            font-weight: 800;
+
+            padding: 8px 12px;
+
+            border-radius: 7px;
+
+            background: #111;
+
+            color: white;
+        }
+
+
+        /* FEATURE */
+
+        .feature {
+            max-width: 1150px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+        }
+
+        .feature-card {
+            min-height: 330px;
+
+            padding: 35px;
+
+            border-radius: 22px;
+
+            background: #111;
+
+            color: white;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-end;
+        }
+
+        .feature-card.light {
+            background: #dedbd3;
+
+            color: #111;
+        }
+
+        .feature-card h3 {
+            font-size: 32px;
+
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: #aaa;
+        }
+
+        .feature-card.light p {
+            color: #666;
+        }
+
+
+        /* CTA */
+
+        .cta {
+            max-width: 900px;
+
+            margin: auto;
+
+            text-align: center;
+
+            padding: 65px 25px;
+
+            border-radius: 25px;
+
+            background: #111;
+
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 43px;
+
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            color: #aaa;
+
+            margin-bottom: 28px;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            padding: 35px;
+
+            text-align: center;
+
+            border-top: 1px solid #deddd8;
+
+            color: #777;
+
+            font-size: 14px;
+        }
+
+
+        /* MOBILE */
+
+        @media(max-width: 850px) {
+
+            .links {
+                display: none;
+            }
+
+            .categories,
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .feature {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media(max-width: 550px) {
+
+            .categories,
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                letter-spacing: -4px;
+            }
+
+            .title h2 {
+                font-size: 35px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="nav">
+
+            <a href="#" class="logo">
+                NOVA
+            </a>
+
+            <ul class="links">
+
+                <li>
+                    <a href="#categories">Categories</a>
+                </li>
+
+                <li>
+                    <a href="#products">Collection</a>
+                </li>
+
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
+            </ul>
+
+            <a href="#shop" class="nav-btn">
+                Shop Now
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="tag">
+                NEW COLLECTION — 2026
+            </div>
+
+            <h1>
+                Define Your
+                <span>Style.</span>
+            </h1>
+
+            <p>
+                Clothing, fragrances, caps and footwear
+                designed for your everyday style.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#products" class="btn primary">
+                    Explore Collection →
+                </a>
+
+                <a href="#categories" class="btn secondary">
+                    Shop Categories
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+
+    <section id="categories">
+
+        <div class="title">
+
+            <h2>Shop By Category</h2>
+
+            <p>
+                Everything you need to complete your look.
+            </p>
+
+        </div>
+
+
+        <div class="categories">
+
+
+            <a href="#clothes" class="category">
+
+                <div class="category-icon">
+                    👕
+                </div>
+
+                <small>01</small>
+
+                <h3>Clothing</h3>
+
+            </a>
+
+
+            <a href="#perfumes" class="category">
+
+                <div class="category-icon">
+                    🧴
+                </div>
+
+                <small>02</small>
+
+                <h3>Perfumes</h3>
+
+            </a>
+
+
+            <a href="#caps" class="category">
+
+                <div class="category-icon">
+                    🧢
+                </div>
+
+                <small>03</small>
+
+                <h3>Caps</h3>
+
+            </a>
+
+
+            <a href="#shoes" class="category">
+
+                <div class="category-icon">
+                    👟
+                </div>
+
+                <small>04</small>
+
+                <h3>Shoes</h3>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- PRODUCTS -->
+
+    <section id="products">
+
+        <div class="title">
+
+            <h2>Featured Collection</h2>
+
+            <p>
+                Selected pieces from our latest collection.
+            </p>
+
+        </div>
+
+
+        <div class="products">
+
+
+            <!-- CLOTHING -->
+
+            <div class="product" id="clothes">
+
+                <div class="product-image">
+                    👕
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-category">
+                        CLOTHING
+                    </div>
+
+                    <h3>Essential Oversized Tee</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            Rs. 1,499
+                        </span>
+
+                        <a href="#shop" class="shop-btn">
+                            Shop
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PERFUME -->
+
+            <div class="product" id="perfumes">
+
+                <div class="product-image">
+                    🧴
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-category">
+                        FRAGRANCE
+                    </div>
+
+                    <h3>Midnight Eau de Parfum</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            Rs. 2,499
+                        </span>
+
+                        <a href="#shop" class="shop-btn">
+                            Shop
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CAP -->
+
+            <div class="product" id="caps">
+
+                <div class="product-image">
+                    🧢
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-category">
+                        HEADWEAR
+                    </div>
+
+                    <h3>Classic Street Cap</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            Rs. 999
+                        </span>
+
+                        <a href="#shop" class="shop-btn">
+                            Shop
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SHOES -->
+
+            <div class="product" id="shoes">
+
+                <div class="product-image">
+                    👟
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-category">
+                        FOOTWEAR
+                    </div>
+
+                    <h3>Urban Runner</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            Rs. 3,499
+                        </span>
+
+                        <a href="#shop" class="shop-btn">
+                            Shop
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURE -->
+
+    <section id="about">
+
+        <div class="feature">
+
+
+            <div class="feature-card">
+
+                <h3>
+                    Style Without Limits.
+                </h3>
+
+                <p>
+                    Discover clothing and accessories
+                    made for everyday confidence.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card light">
+
+                <h3>
+                    Built For Every Day.
+                </h3>
+
+                <p>
+                    From your outfit to your fragrance,
+                    complete your look with NOVA.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- SHOP CTA -->
+
+    <section id="shop">
+
+        <div class="cta">
+
+            <h2>
+                Find Your Next Look.
+            </h2>
+
+            <p>
+                Message us to place an order or ask about a product.
+            </p>
+
+            <!-- CHANGE NUMBER -->
+
+            <a
+                href="https://wa.me/923000000000"
+                target="_blank"
+                class="btn primary"
+            >
+                Order on WhatsApp →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 NOVA — Fashion & Lifestyle Demo
+
+    </footer>
+
+
+</body>
+</html>

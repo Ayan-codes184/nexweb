@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Urban Bites — Restaurant</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #11100e;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+
+            padding: 18px 7%;
+
+            background: rgba(17,16,14,0.8);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav {
+            max-width: 1150px;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #e5a84b;
+        }
+
+        .links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+
+            color: #b9b4aa;
+            font-size: 14px;
+        }
+
+        .links a:hover {
+            color: white;
+        }
+
+        .nav-btn {
+            background: #e5a84b;
+            color: #17130d;
+
+            padding: 10px 18px;
+            border-radius: 9px;
+
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding: 130px 7% 80px;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 550px;
+            height: 550px;
+
+            background: rgba(229,168,75,0.13);
+
+            filter: blur(120px);
+
+            border-radius: 50%;
+
+            right: -100px;
+            top: 15%;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            position: relative;
+        }
+
+        .tag {
+            color: #e5a84b;
+            font-size: 13px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 8vw, 92px);
+
+            line-height: 0.95;
+
+            letter-spacing: -5px;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #e5a84b;
+        }
+
+        .hero p {
+            max-width: 600px;
+
+            color: #aaa59b;
+
+            font-size: 18px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+
+            margin-top: 32px;
+
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 23px;
+
+            border-radius: 10px;
+
+            font-weight: 700;
+        }
+
+        .primary {
+            background: #e5a84b;
+            color: #17130d;
+        }
+
+        .secondary {
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.04);
+        }
+
+        /* SECTION */
+
+        section {
+            padding: 100px 7%;
+        }
+
+        .title {
+            text-align: center;
+            max-width: 650px;
+
+            margin: auto auto 50px;
+        }
+
+        .title h2 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .title p {
+            color: #99958d;
+        }
+
+        /* MENU */
+
+        .menu {
+            max-width: 1000px;
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+        .food {
+            padding: 28px;
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 18px;
+
+            background: #181613;
+
+            transition: 0.3s;
+        }
+
+        .food:hover {
+            transform: translateY(-5px);
+            border-color: rgba(229,168,75,0.5);
+        }
+
+        .food-icon {
+            font-size: 35px;
+            margin-bottom: 18px;
+        }
+
+        .food h3 {
+            margin-bottom: 7px;
+        }
+
+        .food p {
+            color: #969189;
+            font-size: 14px;
+        }
+
+        .price {
+            display: block;
+
+            margin-top: 18px;
+
+            color: #e5a84b;
+
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        /* ABOUT */
+
+        .about {
+            max-width: 1000px;
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 50px;
+
+            align-items: center;
+        }
+
+        .about-box {
+            min-height: 350px;
+
+            border-radius: 25px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(229,168,75,0.2),
+                    transparent 60%
+                ),
+                #181613;
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            display: grid;
+            place-items: center;
+
+            font-size: 90px;
+        }
+
+        .about-text h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            color: #9e9990;
+            margin-bottom: 20px;
+        }
+
+        /* CTA */
+
+        .cta {
+            max-width: 900px;
+
+            margin: auto;
+
+            text-align: center;
+
+            padding: 65px 25px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(229,168,75,0.18),
+                    rgba(255,255,255,0.03)
+                );
+
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .cta h2 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            color: #9e9990;
+            margin-bottom: 28px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 35px;
+
+            text-align: center;
+
+            border-top: 1px solid rgba(255,255,255,0.08);
+
+            color: #77736c;
+
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 750px) {
+
+            .links {
+                display: none;
+            }
+
+            .menu {
+                grid-template-columns: 1fr;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .about-box {
+                min-height: 250px;
+            }
+
+            .hero h1 {
+                letter-spacing: -3px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="nav">
+
+            <a href="#" class="logo">
+                URBAN <span>BITES</span>
+            </a>
+
+            <ul class="links">
+
+                <li><a href="#menu">Menu</a></li>
+
+                <li><a href="#about">About</a></li>
+
+                <li><a href="#contact">Contact</a></li>
+
+            </ul>
+
+            <a href="#contact" class="nav-btn">
+                Order Now
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="tag">
+                Fresh • Local • Delicious
+            </div>
+
+            <h1>
+                Good Food.
+                <span>Good Mood.</span>
+            </h1>
+
+            <p>
+                Delicious food made with fresh ingredients,
+                bold flavors and a whole lot of passion.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#menu" class="btn primary">
+                    Explore Menu →
+                </a>
+
+                <a href="#contact" class="btn secondary">
+                    Order Now
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MENU -->
+
+    <section id="menu">
+
+        <div class="title">
+
+            <h2>Our Favorites</h2>
+
+            <p>
+                Customer favorites made fresh every day.
+            </p>
+
+        </div>
+
+
+        <div class="menu">
+
+
+            <div class="food">
+
+                <div class="food-icon">
+                    🍔
+                </div>
+
+                <h3>Classic Burger</h3>
+
+                <p>
+                    Juicy grilled beef, fresh vegetables
+                    and our special sauce.
+                </p>
+
+                <span class="price">
+                    Rs. 699
+                </span>
+
+            </div>
+
+
+            <div class="food">
+
+                <div class="food-icon">
+                    🍕
+                </div>
+
+                <h3>Cheese Pizza</h3>
+
+                <p>
+                    Crispy crust with rich cheese
+                    and delicious toppings.
+                </p>
+
+                <span class="price">
+                    Rs. 899
+                </span>
+
+            </div>
+
+
+            <div class="food">
+
+                <div class="food-icon">
+                    🍝
+                </div>
+
+                <h3>Creamy Pasta</h3>
+
+                <p>
+                    Creamy pasta prepared with
+                    our signature house sauce.
+                </p>
+
+                <span class="price">
+                    Rs. 799
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="about">
+
+            <div class="about-box">
+                🍽️
+            </div>
+
+            <div class="about-text">
+
+                <h2>
+                    Made With Passion
+                </h2>
+
+                <p>
+                    At Urban Bites, we believe great food
+                    brings people together.
+                </p>
+
+                <p>
+                    From fresh ingredients to our signature
+                    recipes, every dish is prepared with care.
+                </p>
+
+                <a href="#contact" class="btn primary">
+                    Visit Us →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section id="contact">
+
+        <div class="cta">
+
+            <h2>
+                Hungry Yet?
+            </h2>
+
+            <p>
+                Order your favorite meal today.
+            </p>
+
+            <a
+                href="https://wa.me/923000000000"
+                target="_blank"
+                class="btn primary"
+            >
+                Order on WhatsApp →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 Urban Bites — Demo Website
+
+    </footer>
+
+
+</body>
+</html>
